@@ -8,7 +8,7 @@ const Invoices = () => {
 
   return (
    
-      <div className="flex transition-all">
+      <div className="flex transition-all data-dark-mode">
       <Left />
       <div className="container">
       <InvoiceHeader />

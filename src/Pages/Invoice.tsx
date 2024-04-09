@@ -21,7 +21,7 @@ setEdit(true);
   return (
     <div className="flex">
       <Left />
-      <div className="container">
+      <div className="container ">
         <div onClick={handleClickGoBack} className=" cursor-pointer w-20 flex items-center mb-[46px] gap-[22px] font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#0C0E16] hover:text-[#7E88C3]">
           <img src="Left.svg" alt="" />
           <p>Go back</p>
@@ -43,7 +43,7 @@ setEdit(true);
             <button onClick={handleClickEdit} className=" font-bold w-[73px] h-12 bg-[#F9FAFE] text-[#7E88C3] rounded-full hover:bg-[#DFE3FA]">
               Edit
             </button>
-            {edit&&<Edit />}
+            {edit&&<Edit setEdit={setEdit} />}
             <label htmlFor="my_modal_6" className="btn font-bold text-[15px] w-[89px] h-12 bg-[#EC5757] hover:bg-[#FF9797] text-[#FFFFFF] rounded-full">Delete</label>
 
             <input type="checkbox" id="my_modal_6" className="modal-toggle" />

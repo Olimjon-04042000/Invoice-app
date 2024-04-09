@@ -1,23 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --text-color: #111517;
+    --background-color: #FAFAFA;
+    --background-color2: #FFF;
+}
+
+[data-dark-mode] {
+    --background-color: #202C36;
+    --background-color2: #2B3844;
+    --text-color: #FFF;
+}
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --background-color: #202C36;
+        --background-color2: #2B3844;
+    }
+    .dark-mode {
+        display: none;
+    }
 }
 
 body {
-    font-family: "League Spartan", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    background-color: #F8F8FB;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
-ul,
-li {
-    list-style: none;
+.color1 {
+    /* background-color: #FAFAFA; */
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.color2 {
+    background-color: var(--background-color2);
+    color: var(--text-color);
 }
 
 .container {
@@ -29,3 +48,12 @@ li {
 .table-header {
     margin-bottom: 50px;
 }
+
+
+/* body {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #F8F8FB;
+} */
