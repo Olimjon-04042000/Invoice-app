@@ -1,34 +1,14 @@
-import { useState } from "react";
 
 
-const NewInvoice = ({ modal, setModal }: any) => {
-
-const [addItem, setAddItem]=useState(0);
-
-  const closeModal = (e: any) => {
-    if (e.target === e.currentTarget) {
-      setModal(false);
-    }
-  };
-
-  const handleClickAddItem=()=>{
-setAddItem(addItem+1);
-  }
-
-  const handleDelBtn=(index:number)=>{
-
-    const newList=[...Array(addItem)].filter((_,i)=>i!==index);
-    setAddItem(newList.length);
-  }
-
+const Edit = () => {
   return (
     <div
-      onClick={closeModal}
-      className=" absolute  bg-[#00000068] w-[1520px] z-10 left-[-830px] -top-[77px] "
+      // onClick={closeModal}
+      className=" absolute  bg-[#00000068] w-[1520px]  z-10 left-[-777px] top-[-158px] "
     >
-      <div className=" w-[719px] rounded-r-[20px] pt-[60px]   pb-8 pl-[159px] pr-14 bg-white ">
+      <div className=" w-[719px] rounded-r-[20px] pt-[60px] max-h-[1000px] scroll  pb-8 pl-[159px] pr-14 bg-white ">
         <h1 className="mb-[46px] font-bold text-[24px] leading-[32px] tracking-[-0.5px] text-[#0C0E16] ">
-          New Invoice
+        Edit #XM9141
         </h1>
         <div>
           <p className="font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#7C5DFA] mb-[30px]">
@@ -147,6 +127,7 @@ setAddItem(addItem+1);
                 <option className="my-8 h-5 bg-white hover:bg-white hover:text-[#7C5DFA]   font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#0C0E16]">
                   Net 1 Day
                 </option>
+                <br />
                 <option className="my-8 h-5 bg-white   font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#0C0E16]">
                   Net 7 Days
                 </option>
@@ -155,7 +136,7 @@ setAddItem(addItem+1);
                 </option>
                 <option
                   className="my-8 h-5 bg-white   font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#0C0E16]"
-                  aria-checked
+                  selected
                 >
                   Net 30 Days
                 </option>
@@ -189,8 +170,7 @@ setAddItem(addItem+1);
             </p>
           </div>
           <ul>
-            {[...Array(addItem)].map((_,index)=>(
-              <li key={index} className="flex items-center justify-between mb-5">
+            <li className="flex items-center justify-between mb-5">
               <input type="text" className="input input-bordered w-[214px] " />
               <input
                 defaultValue=""
@@ -199,28 +179,40 @@ setAddItem(addItem+1);
               />
               <input type="number" className="input input-bordered w-[100px]" />
               <p className="font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#888EB0] ">
-                0
+                156.00
               </p>
-              <img onClick={()=>handleDelBtn(index)} className="cursor-pointer" src="del-btn.svg" alt="" />
+              <img src="del-btn.svg" alt="" />
             </li>
-            ))}
+            <li className="flex items-center justify-between mb-5">
+              <input type="text" className="input input-bordered w-[214px] " />
+              <input
+                defaultValue=""
+                type="number"
+                className="input input-bordered w-[46px] "
+              />
+              <input type="number" className="input input-bordered w-[100px]" />
+              <p className="font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#888EB0] ">
+                156.00
+              </p>
+              <img src="del-btn.svg" alt="" />
+            </li>
           </ul>
-          <button onClick={handleClickAddItem} className="font-bold w-full h-12 mb-6 rounded-full text-[15px] leading-[15px] tracking-[-0.25px] text-[#7E88C3] bg-[#F9FAFE] hover:bg-[#DFE3FA]">
+          <button className="font-bold w-full h-12 mb-6 rounded-full text-[15px] leading-[15px] tracking-[-0.25px] text-[#7E88C3] bg-[#F9FAFE] hover:bg-[#DFE3FA]">
             + Add New Item
           </button>
-          <div className="flex justify-between">
-            <button className="font-bold  h-12  w-24 rounded-full text-[15px] leading-[15px] tracking-[-0.25px] text-[#7E88C3] bg-[#F9FAFE] hover:bg-[#DFE3FA]">Discard</button>
-            <div className="flex gap-4 fixed">
-              <button className="font-bold  h-12 w-[133px]  rounded-full text-[15px] leading-[15px] tracking-[-0.25px] text-[#888EB0] bg-[#373B53] hover:bg-[#0C0E16]">Save as Draft</button>
-              <button className="font-bold w-[128px] h-12 rounded-full text-[15px] leading-[15px] tracking-[-0.25px] text-white bg-[#7C5DFA] hover:bg-[#9277FF]">
-                Save & Send
+          <div className="flex justify-end">
+          
+            <div className="flex gap-4">
+            <button className="font-bold  h-12  w-24 rounded-full text-[15px] leading-[15px] tracking-[-0.25px] text-[#7E88C3] bg-[#F9FAFE] hover:bg-[#DFE3FA]">Cancel</button>
+              <button className="font-bold w-[128px] h-12 rounded-full text-[15px] leading-[15px] tracking-[-0.25px] text-white bg-[#7C5DFA] hover:bg-[#9277FF] ">
+              Save Changes
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewInvoice;
+export default Edit

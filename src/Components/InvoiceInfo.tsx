@@ -1,8 +1,19 @@
+import {useNavigate} from "react-router-dom"
+
+
 const InvoiceInfo = () => {
+
+  const navigate=useNavigate();
+
+  const handleClickInfo=(e:any)=>{
+
+navigate("/invoice");
+  }
+
   return (
     <div className=" mt-16">
       <ul className="flex flex-col gap-4">
-        <li className="bg-white border border-[#F8F8FB] cursor-pointer hover:border-[#7C5DFA] py-4 pr-6 pl-8 flex items-center justify-between rounded-lg ">
+        <li onClick={handleClickInfo} className="bg-white border border-[#F8F8FB] cursor-pointer hover:border-[#7C5DFA] py-4 pr-6 pl-8 flex items-center justify-between rounded-lg ">
           <p className=" font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#7E88C3]">
             #<span className="text-[#0C0E16]">RT3080</span>
           </p>

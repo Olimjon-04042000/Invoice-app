@@ -1,11 +1,28 @@
 import Left from "../Components/Left";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Edit from "../Components/Edit";
 
 const Invoice = () => {
+
+  const [edit,setEdit]=useState(false);
+
+  const handleClickEdit=()=>{
+setEdit(true);
+  }
+
+  const navigate = useNavigate();
+
+  const handleClickGoBack = () => {
+
+    navigate("/");
+  }
+
   return (
     <div className="flex">
       <Left />
       <div className="container">
-        <div className=" w-20 flex items-center mb-[46px] gap-[22px] font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#0C0E16]">
+        <div onClick={handleClickGoBack} className=" cursor-pointer w-20 flex items-center mb-[46px] gap-[22px] font-bold text-[15px] leading-[15px] tracking-[-0.25px] text-[#0C0E16] hover:text-[#7E88C3]">
           <img src="Left.svg" alt="" />
           <p>Go back</p>
         </div>
@@ -22,17 +39,29 @@ const Invoice = () => {
               </p>
             </div>
           </div>
-          <div className=" flex gap-2">
-            <button className=" font-bold w-[73px] h-12 bg-[#F9FAFE] text-[#7E88C3] rounded-full">
+          <div className=" flex gap-2 relative">
+            <button onClick={handleClickEdit} className=" font-bold w-[73px] h-12 bg-[#F9FAFE] text-[#7E88C3] rounded-full hover:bg-[#DFE3FA]">
               Edit
             </button>
-            <button className=" font-bold w-[89px] h-12 bg-[#EC5757] text-[#FFFFFF] rounded-full">
-              Delete
-            </button>
-            <button className=" font-bold px-6 h-12 bg-[#7C5DFA] text-[#FFFFFF] rounded-full">
+            {edit&&<Edit />}
+            <label htmlFor="my_modal_6" className="btn font-bold text-[15px] w-[89px] h-12 bg-[#EC5757] hover:bg-[#FF9797] text-[#FFFFFF] rounded-full">Delete</label>
+
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+            <div className="modal" role="dialog">
+              <div className="modal-box w-[480px] h-[249px] px-[48px] py-[47px]">
+                <h3 className="font-bold text-lg text-[24px] text-[#0C0E16]">Confirm Deletion</h3>
+                <p className="py-3 font-medium text-[#888EB0] text-[13px]">Are you sure you want to delete invoice #XM9141? This action cannot be undone.</p>
+                <div className="modal-action mt-4">
+                  <label htmlFor="my_modal_6" className="btn font-bold w-[73px] h-12 bg-[#F9FAFE] text-[#7E88C3] rounded-full hover:bg-[#DFE3FA] border-none">Close</label>
+                  <label htmlFor="" className="btn font-bold text-[15px] w-[89px] h-12 bg-[#EC5757] hover:bg-[#FF9797] text-[#FFFFFF] rounded-full">Delete</label>
+                </div>
+              </div>
+            </div>
+            <button className=" font-bold px-6 h-12 bg-[#7C5DFA] text-[#FFFFFF] rounded-full hover:bg-[#9277FF]">
               Mark as Paid
             </button>
           </div>
+          
         </div>
 
         <div className="bg-white px-12 py-[50px] rounded-[10px] ">
@@ -102,16 +131,16 @@ const Invoice = () => {
           </div>
 
           <div className="mt-12 bg-[#F9FAFE] px-8 py-[33px] rounded-t-lg">
-              <table className="w-full">
-                <thead>
+            <table className="w-full">
+              <thead>
                 <tr className=" font-medium text-[13px] leading-[18px] tracking-[-0.1px] text-[#7E88C3] ">
                   <th className="text-start">Item Name</th>
                   <th className="text-center">QTY.</th>
                   <th className="text-end">Price</th>
                   <th className="text-end">Total</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 <tr>
                   <td className="pt-8 text-start font-bold text-[15px] leading-[15x] tracking-[-0.25px] text-[#0C0E16]">Banner Design</td>
                   <td className="pt-8 text-center font-bold text-[15px] leading-[15x] tracking-[-0.25px] text-[#7E88C3]">1</td>
@@ -124,12 +153,12 @@ const Invoice = () => {
                   <td className="pt-8 text-end font-bold text-[15px] leading-[15x] tracking-[-0.25px] text-[#7E88C3]">£ 156.00</td>
                   <td className="pt-8 text-end font-bold text-[15px] leading-[15x] tracking-[-0.25px] text-[#0C0E16]">£ 156.00</td>
                 </tr>
-                </tbody>
-              </table>
+              </tbody>
+            </table>
           </div>
           <div className="px-8 py-6 bg-[#373B53] flex justify-between items-center  rounded-b-lg">
             <p className="font-medium text-[13px] leading-[18x] tracking-[-0.1px] text-white ">Amount Due</p>
-           <p className="font-bold text-[24px] leading-[32px] tracking-[-0.5px] text-white ">£ 556.00</p>
+            <p className="font-bold text-[24px] leading-[32px] tracking-[-0.5px] text-white ">£ 556.00</p>
           </div>
         </div>
       </div>
